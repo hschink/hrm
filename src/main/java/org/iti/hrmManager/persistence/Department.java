@@ -1,4 +1,4 @@
-package org.iti.hrmManager.hrm;
+package org.iti.hrmManager.persistence;
 
 import java.io.Serializable;
 

@@ -1,23 +1,26 @@
-package org.iti.hrmManager.hrm;
+package org.iti.hrmManager.persistence;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="employees")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Employee implements Serializable {
+@MappedSuperclass
+@Table(name="external_staff")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+		name="business",
+		discriminatorType=DiscriminatorType.STRING
+)
+public class ExternalStaff implements Serializable {
 
 	/**
 	 * 
@@ -28,9 +31,7 @@ public class Employee implements Serializable {
 	private String name;
 	private String surname;
 	private float salary;
-	private Department department;
-
-	private Employee boss;
+	private String companyName;
 	
 	
 	public void setId(int id) {
@@ -66,23 +67,12 @@ public class Employee implements Serializable {
 		return salary;
 	}
 
-	public void setDepartment(Department department) {
-		this.department = department;
+	@Column(name="company_name")
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
-	@JoinColumn(name="department")
-	public Department getDepartment() {
-		return department;
-	}
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "boss")
-	public Employee getBoss() {
-		return boss;
-	}
-
-	public void setBoss(Employee boss) {
-		this.boss = boss;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 }

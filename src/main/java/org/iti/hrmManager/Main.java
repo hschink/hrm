@@ -5,12 +5,12 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.iti.hrmManager.hrm.Customer;
-import org.iti.hrmManager.hrm.Department;
-import org.iti.hrmManager.hrm.Employee;
-import org.iti.hrmManager.hrm.Janitor;
-import org.iti.hrmManager.hrm.Manager;
-import org.iti.hrmManager.hrm.Salesperson;
+import org.iti.hrmManager.persistence.Customer;
+import org.iti.hrmManager.persistence.Department;
+import org.iti.hrmManager.persistence.Employee;
+import org.iti.hrmManager.persistence.Janitor;
+import org.iti.hrmManager.persistence.Manager;
+import org.iti.hrmManager.persistence.Salesperson;
 import org.iti.hrmManager.util.HibernateUtil;
 
 public class Main {

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
-"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
 	<session-factory>
@@ -12,11 +12,11 @@
 		<property name="connection.username"></property>
     <property name="connection.password"></property>
     <mapping package="org.iti.hrmManager.hrm"/>
-    <mapping class="org.iti.hrmManager.hrm.Department"/>
-    <mapping class="org.iti.hrmManager.hrm.Employee"/>
-	<mapping class="org.iti.hrmManager.hrm.Manager"></mapping>
-	<mapping class="org.iti.hrmManager.hrm.Customer"></mapping>
-	<mapping class="org.iti.hrmManager.hrm.Salesperson"></mapping>
-	<mapping class="org.iti.hrmManager.hrm.ExternalStaff"></mapping>
-	<mapping class="org.iti.hrmManager.hrm.Janitor"></mapping></session-factory>
+    <mapping class="org.iti.hrmManager.persistence.Department"/>
+    <mapping class="org.iti.hrmManager.persistence.Employee"/>
+	<mapping class="org.iti.hrmManager.persistence.Manager"></mapping>
+	<mapping class="org.iti.hrmManager.persistence.Customer"></mapping>
+	<mapping class="org.iti.hrmManager.persistence.Salesperson"></mapping>
+	<mapping class="org.iti.hrmManager.persistence.ExternalStaff"></mapping>
+	<mapping class="org.iti.hrmManager.persistence.Janitor"></mapping></session-factory>
 	</hibernate-configuration>

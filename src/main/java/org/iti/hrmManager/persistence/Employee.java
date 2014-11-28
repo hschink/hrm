@@ -1,26 +1,23 @@
-package org.iti.hrmManager.hrm;
+package org.iti.hrmManager.persistence;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@MappedSuperclass
-@Table(name="external_staff")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-		name="business",
-		discriminatorType=DiscriminatorType.STRING
-)
-public class ExternalStaff implements Serializable {
+@Entity
+@Table(name="employees")
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Employee implements Serializable {
 
 	/**
 	 * 
@@ -31,7 +28,9 @@ public class ExternalStaff implements Serializable {
 	private String name;
 	private String surname;
 	private float salary;
-	private String companyName;
+	private Department department;
+
+	private Employee boss;
 	
 	
 	public void setId(int id) {
@@ -67,12 +66,23 @@ public class ExternalStaff implements Serializable {
 		return salary;
 	}
 
-	@Column(name="company_name")
-	public String getCompanyName() {
-		return companyName;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
+	@ManyToOne( cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
+	@JoinColumn(name="department")
+	public Department getDepartment() {
+		return department;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "boss")
+	public Employee getBoss() {
+		return boss;
+	}
+
+	public void setBoss(Employee boss) {
+		this.boss = boss;
 	}
 }

@@ -1,4 +1,4 @@
-hrm-manager
+hrm
 ===========
 
 [![Build Status](https://travis-ci.org/hschink/hrm-manager.svg)](https://travis-ci.org/hschink/hrm-manager)

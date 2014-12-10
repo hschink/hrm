@@ -1,4 +1,4 @@
-hrm-manager
+hrm
 ===========
 
 [![Build Status](https://travis-ci.org/hschink/hrm-manager.svg)](https://travis-ci.org/hschink/hrm-manager)
@@ -11,7 +11,7 @@ Run tests on the command-line with ``gradle test`` or use Eclipse's built-in JUn
 
 ## Development ##
 
-If you like to join hrm-manager development you may just want to use [Eclipse IDE][eclipse].
+If you like to join hrm development you may just want to use [Eclipse IDE][eclipse].
 Just use [gradle's Eclipse plug-in][eclipse plug-in] with ``gradle eclipse`` to create the necessary Eclipse
 configuration files.
 

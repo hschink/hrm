@@ -33,9 +33,10 @@ public class CustomerTest {
 		trx = session.beginTransaction();
 	}
 
-	private static void createTestDatabase() throws IOException, SQLException {
+	private static void createTestDatabase() throws IOException, SQLException, ClassNotFoundException {
 		Path path = FileSystems.getDefault().getPath("sql", "00_schema.sql");
 		String schema = new String(Files.readAllBytes(path));
+		Class.forName("org.sqlite.JDBC");
 		Connection connection = DriverManager.getConnection("jdbc:sqlite:hrm_test.sqlite");
 		Statement stm = connection.createStatement();
 
